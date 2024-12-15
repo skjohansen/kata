@@ -3,3 +3,4 @@
 .vs
 *.coverage
 **/TestResults
+coveragereport/
