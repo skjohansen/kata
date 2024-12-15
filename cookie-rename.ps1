@@ -88,7 +88,7 @@ function Update-NamespacesAndClasses {
     }
 
     # rename single files
-    (Get-Content -Path Hans.sln) -replace $OldName, $NewName | Set-Content -Path Hans.sln
+    (Get-Content -Path kata.sln) -replace $OldName, $NewName | Set-Content -Path Hans.sln
     (Get-Content -Path "cookie-clear-results.ps1") -replace $OldName, $NewName | Set-Content -Path "cookie-clear-results.ps1"
     (Get-Content -Path "README.md") -replace $OldName, $NewName | Set-Content -Path "README.md"
 }
