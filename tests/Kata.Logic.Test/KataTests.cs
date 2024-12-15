@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Xunit.Abstractions;
 
-namespace TicTacToe.Logic.Test;
+namespace Kata.Logic.Test;
 
 public class KataTests(ITestOutputHelper output)
 {
@@ -20,7 +20,7 @@ public class KataTests(ITestOutputHelper output)
         // Assert
     }
 
-    [Fact(DisplayName = "Pretty name"]
+    [Fact(DisplayName = "Pretty name")]
     public void MethodName_StateUnderTest_ExpectedBehavior2()
     {
         // Arrange

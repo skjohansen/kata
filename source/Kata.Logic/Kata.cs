@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TicTacToe.Logic
+namespace Kata.Logic
 {
     public class Kata
     {
