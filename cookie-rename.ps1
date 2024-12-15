@@ -44,26 +44,6 @@ function Rename-GitObjects {
     # Solution files
     Write-Host "Rename solution"
     git mv kata.sln $NewName".sln"
-
-    # # Renaming directories
-    # Get-ChildItem -Path . -Directory -Recurse | Sort-Object FullName -Descending | ForEach-Object {
-    #     if ($_.Name -match $OldNameRegex) {
-    #         $OldPath = $_.Name
-    #         $NewPath = $OldPath -replace $OldNameRegex, $NewName
-    #         git mv $OldPath $NewPath
-    #         Write-Host "Renamed folder: $OldPath -> $NewPath"
-    #     }
-    # }
-
-    # # Renaming files
-    # Get-ChildItem -Path . -File -Recurse | Sort-Object FullName -Descending | ForEach-Object {
-    #     if ($_.Name -match $OldNameRegex) {
-    #         $OldPath = $_.Name
-    #         $NewPath = $OldPath -replace $OldNameRegex, $NewName
-    #         git mv $OldPath $NewPath
-    #         Write-Host "Renamed file: $OldPath -> $NewPath"
-    #     }
-    # }
 }
 
 # Function to update file content with new namespaces and classes
@@ -109,3 +89,6 @@ Rename-GitObjects -OldName $OldAppName -NewName $NewAppName
 Update-NamespacesAndClasses -OldName $OldAppName -NewName $NewAppName
 
 Write-Host "Renaming and updates complete."
+Write-Host "---- Next step:"
+Write-Host "Add changes to git: git add ."
+Write-Host "Commit changes to git: git commit -m ""refactor: Rename to $NewAppName"""
