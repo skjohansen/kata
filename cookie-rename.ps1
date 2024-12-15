@@ -43,7 +43,7 @@ function Rename-GitObjects {
 
     # Solution files
     Write-Host "Rename solution"
-    git mv kata.sln $($NewName).sln
+    git mv kata.sln $NewName".sln"
 
     # # Renaming directories
     # Get-ChildItem -Path . -Directory -Recurse | Sort-Object FullName -Descending | ForEach-Object {
@@ -88,7 +88,7 @@ function Update-NamespacesAndClasses {
     }
 
     # rename single files
-    (Get-Content -Path kata.sln) -replace $OldName, $NewName | Set-Content -Path Hans.sln
+    (Get-Content -Path $NewName".sln") -replace $OldName, $NewName | Set-Content -Path $NewName".sln"
     (Get-Content -Path "cookie-clear-results.ps1") -replace $OldName, $NewName | Set-Content -Path "cookie-clear-results.ps1"
     (Get-Content -Path "README.md") -replace $OldName, $NewName | Set-Content -Path "README.md"
 }
