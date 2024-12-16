@@ -16,9 +16,9 @@ Scripts requires powershell
 
 Install prerequisits: `dotnet tool restore`
 
-Run tests: `cookie-run-tests.ps1`
+Run tests: `dev-run-tests.ps1`
 
-Watch coverage (do it in a serperate terminal): `cookie-watch-coverage.ps1`
+Watch coverage (do it in a serperate terminal): `dev-watch-coverage.ps1`
 
 If a cleanup after renaming or other is needed the `cookie-cleanup.ps1` can be used.
 
