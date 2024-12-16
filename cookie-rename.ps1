@@ -69,7 +69,7 @@ function Update-NamespacesAndClasses {
 
     # rename single files
     (Get-Content -Path $NewName".sln") -replace $OldName, $NewName | Set-Content -Path $NewName".sln"
-    (Get-Content -Path "dev-clear-results.ps1") -replace $OldName, $NewName | Set-Content -Path "dev-clear-results.ps1"
+    (Get-Content -Path "cookie-cleanup.ps1") -replace $OldName, $NewName | Set-Content -Path "cookie-cleanup.ps1"
     (Get-Content -Path "dockerfile") -replace $OldName, $NewName | Set-Content -Path "dockerfile"
     (Get-Content -Path "README.md") -replace $OldName, $NewName | Set-Content -Path "README.md"
 }
