@@ -71,8 +71,10 @@ function Update-NamespacesAndClasses {
     (Get-Content -Path $NewName".sln") -replace $OldName, $NewName | Set-Content -Path $NewName".sln"
     (Get-Content -Path "cookie-cleanup.ps1") -replace $OldName, $NewName | Set-Content -Path "cookie-cleanup.ps1"
     (Get-Content -Path "dockerfile") -replace $OldName, $NewName | Set-Content -Path "dockerfile"
-    (Get-Content -Path ".github/workflows/ci.yml") -replace "KATA", $NewName.ToLower() | Set-Content -Path ".github/workflows/ci.yml"
+    (Get-Content -Path ".github/workflows/ci.yml") -replace $OldName, $NewName.ToLower() | Set-Content -Path ".github/workflows/ci.yml"
+    (Get-Content -Path ".github/workflows/ci.yml") -replace "KANTAINER", $NewName.ToLower() | Set-Content -Path ".github/workflows/ci.yml"
     (Get-Content -Path "README.md") -replace $OldName, $NewName | Set-Content -Path "README.md"
+    (Get-Content -Path "README.md") -replace "KANTAINER", $NewName.ToLower() | Set-Content -Path "README.md"
 }
 
 # Main Script Logic

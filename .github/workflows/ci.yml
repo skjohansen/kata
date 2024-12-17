@@ -58,5 +58,5 @@ jobs:
         context: .
         push: true 
         tags: |
-          ghcr.io/skjohansen/KATA:${{ github.run_number }} 
+          ghcr.io/skjohansen/KANTAINER:${{ github.run_number }} 
 
