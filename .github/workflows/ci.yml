@@ -1,0 +1,63 @@
+name: CI for Kata
+
+on:
+  push:
+    branches:
+      - '**'
+    paths:
+      - 'source/**'
+      - 'tests/**'
+      - 'dockerfile'
+  pull_request:
+    types: [opened, synchronize]
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    permissions:
+      contents: read
+      packages: write
+      checks: write
+      issues: read
+      pull-requests: write
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 9.0.x
+    - name: Dotnet restore
+      run:  
+        dotnet tool restore
+
+    - name: Test result
+      shell: pwsh
+      run: |
+        .\dev-run-tests.ps1
+  
+    - name: Dotnet Test Reporter
+      uses: bibipkins/dotnet-test-reporter@v1.4.1
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        results-path: ./**/*.trx
+        coverage-path: ./**/coverage.cobertura.xml
+        coverage-type: cobertura
+            
+    - name: Log in to GitHub Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+
+    # TODO: Rename docker image to lowercase    
+    - name: Build Docker image
+      uses: docker/build-push-action@v6
+      with:
+        context: .
+        push: true 
+        tags: |
+          ghcr.io/skjohansen/KATA:${{ github.run_number }} 
+

@@ -1,3 +1,5 @@
+![Build](https://github.com/skjohansen/REPO/actions/workflows/ci.yml/badge.svg)
+
 # kata
 
 Url for Kata:
